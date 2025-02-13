@@ -1,0 +1,13 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/${_PROXY_NAME}:${_PROXY_VERSION}',
+           '-t', 'gcr.io/$PROJECT_ID/${_PROXY_NAME}',
+           '.']
+images:
+  - 'gcr.io/$PROJECT_ID/${_PROXY_NAME}:latest'
+  - 'gcr.io/$PROJECT_ID/${_PROXY_NAME}:${_PROXY_VERSION}'
+
+substitutions:
+  _PROXY_VERSION: 1.0.0
+  _PROXY_NAME: workbench-proxy 
+tags: ['QWIKLABS_IDE_BUILDER', 'vertex', 'proxy']
